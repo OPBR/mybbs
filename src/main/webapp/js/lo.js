@@ -3,11 +3,20 @@
  */
 $(function () {
     // 需要做一个针对于mid或者是password输入的字段丢失焦点的事件处理
-    $("#mid").on("blur",function () {
+    $("#mid").on("blur", function () {
         validateMid()
     });
-    $("#password").on("blur",function () {
+    $("#password").on("blur", function () {
         validatePassword();
+    });
+    $("#realname").on("blur", function () {
+       validateRealname();
+    });
+    $("#realid").on("blur", function () {
+       validateRealid();
+    });
+    $("#phone").on("blur", function () {
+        return validatePhone();
     });
     //对于整个表单需要进行提交前的检查操作
     $("#loginFrom").on("submit",function () {
@@ -18,7 +27,16 @@ function validateMid() {
     return validateEmpty("mid");
 }
 function validatePassword() {
-    return validateEmpty("password")
+    return validateEmpty("password");
+}
+function validateRealname() {
+    return validateEmpty("realname");
+}
+function validateRealid() {
+    return validateEmpty("realid");
+}
+function validatePhone() {
+    return validateEmpty("phone");
 }
 /**
  * 本函数的主要功能是验证传入的数据是否为空，如果为空，则显示错误，同时显示错误信息
