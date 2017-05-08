@@ -57,14 +57,6 @@
                 </div>
                 <div class="col-md-4" id="passwordSpan"></div>
             </div>
-            <%--<div class="form-group" id="dateDiv">--%>
-                <%--<label class="col-md-3 control-label" for="mid">日期</label>--%>
-                <%--<div class="col-md-5">--%>
-                    <%--&lt;%&ndash;id是为javascript服务的，而name是为了JSP的接收数据服务的&ndash;%&gt;--%>
-                    <%--<input type="date" id="date" name="date" class="form-control">--%>
-                <%--</div>--%>
-                <%--<div class="col-md-4" id="dateSpan"></div>--%>
-            <%--</div>--%>
             <div class="form-group" id="butDiv">
                 <div class="col-md-5 col-md-offset-3">
                     <div class="pull-left">
