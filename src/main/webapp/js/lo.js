@@ -36,6 +36,13 @@ function validateRealid() {
     return validateEmpty("realid");
 }
 function validatePhone() {
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    if(!myreg.test($("#phone").val()))
+    {
+        $("#phoneDiv").attr("class","form-group has-error");
+        $("#phoneSpan").html('<label class="control-label" for="mid">无效号码</label>');
+        return false;
+    }
     return validateEmpty("phone");
 }
 /**
