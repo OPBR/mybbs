@@ -1,3 +1,6 @@
 body {
-    background:url(index.jpg) #f8f6e9;
+    background-image:url(index.jpg);
+    background-color: #f8f6e9;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }

@@ -3,9 +3,11 @@ package org.zhangy.mybbs.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.zhangy.mybbs.dto.json.Response;
+import org.zhangy.mybbs.dto.json.impl.SuccessResponse;
 import org.zhangy.mybbs.entity.Content;
 import org.zhangy.mybbs.entity.Praise;
 import org.zhangy.mybbs.entity.User;
@@ -31,8 +33,10 @@ public class PraiseController {
     @Autowired
     private ContentService contentService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/addPraise/{username}/{id}")
-    public String addPraise(@PathVariable String username, @PathVariable String id, Model model){
+//    @RequestMapping(method = RequestMethod.GET, value = "/addPraise/{username}/{id}")
+    @RequestMapping(method = RequestMethod.POST, value = "addPraise")
+    @ResponseBody
+    public Response addPraise(String username, String id){
         User user = userService.findName(username);
         Content content = contentService.get(id);
         Praise praise = praiseService.findCondition(user, content);
@@ -47,7 +51,6 @@ public class PraiseController {
             content.setCount(count);
             praiseService.saveOrDelete(praise1);
             contentService.saveOrUpdate(content);
-//            return "/user/index";
         } else {
             praiseService.delete(praise.getId());
             int count = content.getCount();
@@ -55,7 +58,7 @@ public class PraiseController {
             content.setCount(count);
             contentService.saveOrUpdate(content);
         }
-        return "redirect:/user/index";
+        return new SuccessResponse();
     }
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/sort")

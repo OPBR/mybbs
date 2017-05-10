@@ -39,7 +39,7 @@
 <a href="${pageContext.request.contextPath}/praise/sort" class="btn btn-xs btn-warning">按赞排序</a>
 <a href="${pageContext.request.contextPath}/user/index" class="btn btn-xs btn-warning">默认排序</a>
 <table class="table">
-    <caption>基本的表格布局</caption>
+    <caption></caption>
     <thead>
     <tr>
         <th>标题</th>
@@ -81,8 +81,9 @@
                             <%--<form action="${pageContext.request.contextPath}/praise/addPraise/${sessionScope.user}/${movie.id}" method="get">--%>
                                 <%--<button type="submit" class="btn btn-xs btn-danger">点赞${movie.count}</button>--%>
                             <%--<jsp:include page="addPraise.jsp" flush="true"></jsp:include>--%>
-                            <a href="${pageContext.request.contextPath}/praise/addPraise/${sessionScope.user}/${movie.id}">
-                                <button type="submit" class="btn btn-warning">
+                            <%--<a href="${pageContext.request.contextPath}/praise/addPraise/${sessionScope.user}/${movie.id}">--%>
+                            <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '${movie.count}')">
+                                <button class="btn btn-warning">
                                     <span class="glyphicon glyphicon-thumbs-up"></span>${movie.count}
                                 </button>
                             </a>
@@ -99,9 +100,9 @@
                             <%--<form action="${pageContext.request.contextPath}/praise/addPraise/${sessionScope.user}/${movie.id}" method="get">--%>
                                 <%--<button type="submit" class="btn btn-xs btn-danger">点赞</button>--%>
                             <%--<jsp:include page="addPraise.jsp" flush="true"></jsp:include>--%>
-                            <a href="${pageContext.request.contextPath}/praise/addPraise/${sessionScope.user}/${movie.id}">
-                                <button type="submit" class="btn btn-warning">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>${movie.count}
+                            <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '${movie.count}')">
+                                <button class="btn btn-warning">
+                                    <span id="praiseId" class="glyphicon glyphicon-thumbs-up"></span>${movie.count}
                                 </button>
                             </a>
                             <%--</form>--%>
@@ -130,4 +131,22 @@
     <%--</c:forEach>--%>
 <%--</table>--%>
 </body>
+<script type="text/javascript">
+    function praise(username, id, praiseCount) {
+        $.ajax({
+            url: '${pageContext.request.contextPath}/praise/addPraise',
+            type: 'POST',
+            data: {
+                'username' : username,
+                'id': id
+            },
+            dataType: "JSON",
+            success: function() {
+                    alert("test");
+                    var strategyPraiseNo = parseInt(praiseCount) + 1;
+                    $('#praiseId').html(strategyPraiseNo)
+            }
+        });
+    }
+</script>
 </html>
