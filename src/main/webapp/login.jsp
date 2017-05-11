@@ -22,8 +22,7 @@
 <body>
 <div class="container">
     <%--由于本次编写需要基于表单，同时需要考虑到数据验证的问题，那么就可以不写row样式--%>
-    <%--<form id="loginFrom" action="${pageContext.request.contextPath}/user/register.action" method="post" class="form-horizontal">--%>
-    <form id="loginFrom" action="${pageContext.request.contextPath}/user/login" method="get" class="form-horizontal">
+    <form id="loginFrom" class="form-horizontal">
         <fieldset>
             <div class="mycenter">
                 <div class="mysign">
@@ -42,14 +41,6 @@
                 </div>
                 <div class="col-md-4" id="midSpan"></div>
             </div>
-            <%--<div class="form-group" id="phoneDiv">--%>
-                <%--<label class="col-md-3 control-label" for="mid">手机号</label>--%>
-                <%--<div class="col-md-5">--%>
-                    <%--&lt;%&ndash;id是为javascript服务的，而name是为了JSP的接收数据服务的&ndash;%&gt;--%>
-                    <%--<input type="text" id="phone" name="phone" class="form-control" placeholder="请输入手机号">--%>
-                <%--</div>--%>
-                <%--<div class="col-md-4" id="phoneSpan"></div>--%>
-            <%--</div>--%>
             <div class="form-group" id="passwordDiv">
                 <label class="col-md-3 control-label" for="mid">密   码</label>
                 <div class="col-md-5">
@@ -63,7 +54,6 @@
                     <div class="pull-left">
                         <button type="button" id="subBut" class="btn btn-xs btn-primary">登录</button>
                     </div>
-                   <%-- <button type="reset" id="rstBut" class="btn btn-xs btn-warning">重置</button>--%>
                     <a href="${pageContext.request.contextPath}/findPass.jsp" class="control-label">忘记密码</a>
                 </div>
             </div>

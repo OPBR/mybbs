@@ -6,6 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.zhangy.mybbs.dto.json.Response;
+import org.zhangy.mybbs.dto.json.impl.FailedResponse;
+import org.zhangy.mybbs.dto.json.impl.SuccessResponse;
 import org.zhangy.mybbs.entity.Content;
 import org.zhangy.mybbs.entity.User;
 import org.zhangy.mybbs.service.ContentService;
@@ -62,8 +66,9 @@ public class UserController {
         return "redirect:/jsp/success.jsp";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/login")
-    public String login(String username, String password, Model model, HttpSession session){
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    @ResponseBody
+    public Response login(String username, String password, Model model, HttpSession session){
         User verify = userService.findVerify(username, password);
         System.out.println(verify);
         if (verify != null){
@@ -71,9 +76,10 @@ public class UserController {
             model.addAttribute("username",username);
             List<Content> all = contentService.findAllSort();
             model.addAttribute("contentList", all);
-            return "/index.jsp";
+            return new SuccessResponse();
         }
-        return "redirect:/jsp/success.jsp";
+//        return "redirect:/jsp/success.jsp";
+        return new FailedResponse();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/find")

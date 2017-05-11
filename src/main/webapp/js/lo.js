@@ -23,8 +23,27 @@ $(function () {
         return validateMid() && validatePassword(); //验证都通过后可以提交
     });
     $("#subBut").on("click", function () {
-       $("#password").val($.md5($("#password").val()));
-       $("#loginFrom").submit();
+        $("#hidText").hide();
+        $("#password").val($.md5($("#password").val()));
+        $.ajax({
+            url: 'user/login',
+            type: 'POST',
+            data: {
+                'username' : $("#mid").val(),
+                'password' : $("#password").val()
+            },
+            dataType: "JSON",
+            success: function (data) {
+                if (data.code == "1"){
+                    location.href = "user/index";
+                } else if (data.code == "2"){
+                    $("#midDiv").attr("class","form-group has-error");
+                    $("#passwordDiv").attr("class","form-group has-error");
+                    $("#midSpan").html('<label class="control-label" for="mid">账号或密码错误</label>');
+                    $("#passwordSpan").html('');
+                }
+            }
+        });
     });
 });
 function validateMid() {
