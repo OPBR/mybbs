@@ -22,6 +22,10 @@ $(function () {
     $("#loginFrom").on("submit",function () {
         return validateMid() && validatePassword(); //验证都通过后可以提交
     });
+    $("#subBut").on("click", function () {
+       $("#password").val($.md5($("#password").val()));
+       $("#loginFrom").submit();
+    });
 });
 function validateMid() {
     return validateEmpty("mid");

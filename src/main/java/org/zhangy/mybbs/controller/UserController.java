@@ -62,18 +62,18 @@ public class UserController {
         return "redirect:/jsp/success.jsp";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public String login(Model model, User user, HttpSession session){
-        User verify = userService.findVerify(user.getUsername(), Md5Util.md5(user.getPassword()));
+    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    public String login(String username, String password, Model model, HttpSession session){
+        User verify = userService.findVerify(username, password);
         System.out.println(verify);
         if (verify != null){
-            session.setAttribute("user",user.getUsername());
-            model.addAttribute("username",user.getUsername());
+            session.setAttribute("user",username);
+            model.addAttribute("username",username);
             List<Content> all = contentService.findAllSort();
             model.addAttribute("contentList", all);
             return "/index.jsp";
         }
-        return "/jsp/success.jsp";
+        return "redirect:/jsp/success.jsp";
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/find")
