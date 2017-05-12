@@ -51,12 +51,12 @@
     <tbody>
     <c:forEach var="movie" items="${requestScope.contentList}">
         <tr>
-            <td>${movie.title}</td>
+            <td><font size="6" style="font-family: '微软雅黑'">${movie.title}</font></td>
             <a href="#">
-                <td>${movie.user.username}</td>
+                <td><font size="6" style="font-family: '微软雅黑'">${movie.user.username}</font></td>
             </a>
             <td>
-                    ${movie.current}
+                <font size="6" style="font-family: '微软雅黑'">${movie.current}</font>
             </td>
             <a href="#">
                 <c:if test="${sessionScope.user eq movie.user.username}">
