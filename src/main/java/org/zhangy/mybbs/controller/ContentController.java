@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.zhangy.mybbs.dto.json.Response;
+import org.zhangy.mybbs.dto.json.impl.SuccessResponse;
 import org.zhangy.mybbs.entity.Comment;
 import org.zhangy.mybbs.entity.Content;
 import org.zhangy.mybbs.entity.User;
@@ -32,15 +35,19 @@ public class ContentController {
     @Autowired
     private CommentService commentService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/release/{username}")
-    public String release(@PathVariable String username, Model model, Content content){
-        User name = userService.findName(username);
-        content.setUser(name);
+    @RequestMapping(method = RequestMethod.POST, value = "release")
+    @ResponseBody
+    public Response release(String username, String title, String info, Model model){
+        User user = userService.findName(username);
+        Content content = new Content();
+        content.setUser(user);
         content.setCurrent(new Date());
+        content.setTitle(title);
+        content.setInfo(info);
         contentService.saveOrUpdate(content);
         List<Content> all = contentService.findAllSort();
         model.addAttribute("contentList", all);
-        return "/index.jsp";
+        return new SuccessResponse();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/findContent/{id}")
