@@ -78,16 +78,11 @@
                             <form action="${pageContext.request.contextPath}/content/deleteContent/${movie.id}" method="post">
                                 <button type="submit" class="btn btn-xs btn-danger">删除</button>
                             </form>
-                            <%--<form action="${pageContext.request.contextPath}/praise/addPraise/${sessionScope.user}/${movie.id}" method="get">--%>
-                                <%--<button type="submit" class="btn btn-xs btn-danger">点赞${movie.count}</button>--%>
-                            <%--<jsp:include page="addPraise.jsp" flush="true"></jsp:include>--%>
-                            <%--<a href="${pageContext.request.contextPath}/praise/addPraise/${sessionScope.user}/${movie.id}">--%>
-                            <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '${movie.count}')">
+                            <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '1')">
                                 <button class="btn btn-warning">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>${movie.count}
+                                    <span id="praiseId1${movie.id}" class="glyphicon glyphicon-thumbs-up"><label id="label1${movie.id}" style="display: inline-block">${movie.count}</label></span>
                                 </button>
                             </a>
-                            <%--</form>--%>
                         </td>
                     </c:if>
                 </c:if>
@@ -97,16 +92,11 @@
                             <form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">
                                 <button type="submit" class="btn btn-xs btn-info">查看</button>
                             </form>
-                            <%--<form action="${pageContext.request.contextPath}/praise/addPraise/${sessionScope.user}/${movie.id}" method="get">--%>
-                                <%--<button type="submit" class="btn btn-xs btn-danger">点赞</button>--%>
-                            <%--<jsp:include page="addPraise.jsp" flush="true"></jsp:include>--%>
-                            <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '${movie.count}')">
+                            <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '2')">
                                 <button class="btn btn-warning">
-                                    <span id="praiseId" class="glyphicon glyphicon-thumbs-up"></span>${movie.count}
+                                    <span id="praiseId2${movie.id}" class="glyphicon glyphicon-thumbs-up"><label id="label2${movie.id}" style="display: inline-block">${movie.count}</label></span>
                                 </button>
                             </a>
-                            <%--</form>--%>
-                                <%--<a href="${pageContext.request.contextPath}/content/findContent/${movie.id}">查看</a>--%>
                         </td>
                     </c:if>
                     <c:if test="${empty sessionScope.user }">
@@ -123,16 +113,9 @@
     </c:forEach>
     </tbody>
 </table>
-<%--<table>--%>
-    <%--<c:forEach var="movie" items="${requestScope.contentList}">--%>
-        <%--<tr>--%>
-            <%--<td>${movie.title}</td>--%>
-        <%--</tr>--%>
-    <%--</c:forEach>--%>
-<%--</table>--%>
 </body>
 <script type="text/javascript">
-    function praise(username, id, praiseCount) {
+    function praise(username, id, countType) {
         $.ajax({
             url: '${pageContext.request.contextPath}/praise/addPraise',
             type: 'POST',
@@ -141,10 +124,16 @@
                 'id': id
             },
             dataType: "JSON",
-            success: function() {
-                    alert("test");
-                    var strategyPraiseNo = parseInt(praiseCount) + 1;
-                    $('#praiseId').html(strategyPraiseNo)
+            success: function(data) {
+                var strategyPraiseNo = data.count;
+                if ("1" === countType){
+                    $('#label1' + id).css('display','none');
+                    $('#praiseId1' + id).html('<label id="label1' + id + '" style="display: inline-block">' + strategyPraiseNo +'</label>');
+                }
+                if ("2" === countType){
+                    $('#label2' + id).css('display','none');
+                    $('#praiseId2' + id).html('<label id="label2' + id + '" style="display: inline-block">' + strategyPraiseNo +'</label>');
+                }
             }
         });
     }
