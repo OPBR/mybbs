@@ -22,6 +22,7 @@ public class User {
     private String password;
     private String phone;
     private String realid;
+    private Integer type;
 
     @Lob
     private byte[] realname;
@@ -114,5 +115,13 @@ public class User {
 
     public void setPraises(List<Praise> praises) {
         this.praises = praises;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
