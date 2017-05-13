@@ -2,7 +2,8 @@
  * Created by pc on 2017/5/12.
  */
 $(function () {
-   $('#subBut').on('click', function () {
+    $('#returnLogin').trigger("click");
+    $('#subBut').on('click', function () {
        $.ajax({
            url: 'content/release',
            type: 'POST',
