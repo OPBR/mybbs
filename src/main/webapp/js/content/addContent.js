@@ -7,7 +7,7 @@ $(function () {
            url: 'content/release',
            type: 'POST',
            data: {
-               'username' : $("#mid").val(),
+               'username' : $("#hidInput").val(),
                'title' : $("#title").val(),
                'info' : $("#info").val()
            },
