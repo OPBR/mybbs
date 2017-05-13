@@ -68,12 +68,11 @@ public class ContentController {
         return "/updateContent.jsp";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/deleteContent/{id}")
-    public String deleteContent(@PathVariable String id, Model model){
+    @RequestMapping(method = RequestMethod.POST, value = "deleteContent")
+    @ResponseBody
+    public Response deleteContent(String id){
         contentService.delete(id);
-        List<Content> all = contentService.findAllSort();
-        model.addAttribute("contentList", all);
-        return "/index.jsp";
+        return new SuccessResponse();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/updateSubmit/{id}")
