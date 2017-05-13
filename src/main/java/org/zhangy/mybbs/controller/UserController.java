@@ -69,10 +69,11 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     @ResponseBody
     public Response login(String username, String password, Model model, HttpSession session){
-        User verify = userService.findVerify(username, password);
-        System.out.println(verify);
-        if (verify != null){
+        User user = userService.findVerify(username, password);
+        System.out.println(user);
+        if (user != null){
             session.setAttribute("user",username);
+            session.setAttribute("type", user.getType());
             model.addAttribute("username",username);
             List<Content> all = contentService.findAllSort();
             model.addAttribute("contentList", all);
@@ -103,7 +104,7 @@ public class UserController {
         return "/register.jsp";
     }
 
-    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/index")
+    @RequestMapping(method = {RequestMethod.GET}, value = "/index")
     public String index(Model model){
         List<Content> all = contentService.findAllSort();
         model.addAttribute("contentList",all);
