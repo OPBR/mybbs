@@ -25,9 +25,61 @@
     if (session.getAttribute("user") != null){
 %>
 <h3>hello ${sessionScope.user}</h3>
-<a href="${pageContext.request.contextPath}/addContent.jsp" class="btn btn-xs btn-primary">发帖</a>
+<div class="container">
+    <div class="navbar-header">
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="../" class="navbar-brand">论坛首页</a>
+    </div>
+    <nav id="bs-navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="${pageContext.request.contextPath}/addContent.jsp">发帖</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/user/my/${sessionScope.user}">我的</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/logout.jsp">退出</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/praise/sort">按赞排序</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/user/index">默认排序</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<%--<div class="col-md-12">
+    <div class="pull-left col-md-2">
+        <a href="${pageContext.request.contextPath}/addContent.jsp" class="btn btn-xs btn-primary">发帖</a>
+    </div>
+    <div class="pull-left col-md-2">
+        <a href="${pageContext.request.contextPath}/user/my/${sessionScope.user}" class="btn btn-xs btn-primary">我的</a>
+    </div>
+    <div class="pull-left col-md-2">
+        <a href="${pageContext.request.contextPath}/logout.jsp" class="btn btn-xs btn-warning">退出</a>
+    </div>
+    <div class="pull-right col-md-2">
+        <a href="${pageContext.request.contextPath}/praise/sort" class="btn btn-xs btn-warning">按赞排序</a>
+    </div>
+    <div class="pull-right col-md-2">
+        <a href="${pageContext.request.contextPath}/user/index" class="btn btn-xs btn-warning">默认排序</a>
+    </div>
+    <div class="pull-right col-md-2">
+        <a href="#">修改密码</a>
+    </div>
+</div>--%>
+<%--<a href="${pageContext.request.contextPath}/addContent.jsp" class="btn btn-xs btn-primary">发帖</a>
 <a href="${pageContext.request.contextPath}/user/my/${sessionScope.user}" class="btn btn-xs btn-primary">我的</a>
 <a href="${pageContext.request.contextPath}/logout.jsp" class="btn btn-xs btn-warning">退出</a>
+<a href="${pageContext.request.contextPath}/praise/sort" class="btn btn-xs btn-warning">按赞排序</a>
+<a href="${pageContext.request.contextPath}/user/index" class="btn btn-xs btn-warning">默认排序</a>--%>
 <%
 } else {
 %>
@@ -36,8 +88,6 @@
 <%
     }
 %>
-<a href="${pageContext.request.contextPath}/praise/sort" class="btn btn-xs btn-warning">按赞排序</a>
-<a href="${pageContext.request.contextPath}/user/index" class="btn btn-xs btn-warning">默认排序</a>
 <table class="table">
     <caption></caption>
     <thead>
@@ -92,6 +142,9 @@
                             <form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">
                                 <button type="submit" class="btn btn-xs btn-info">查看</button>
                             </form>
+                            <c:if test="${sessionScope.type == 1}">
+                                <button id="remove${movie.id}" type="button" class="btn btn-xs btn-danger" onclick="remove('${movie.id}')">删除</button>
+                            </c:if>
                             <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '2')">
                                 <button class="btn btn-warning">
                                     <span id="praiseId2${movie.id}" class="glyphicon glyphicon-thumbs-up"><label id="label2${movie.id}" style="display: inline-block">${movie.count}</label></span>

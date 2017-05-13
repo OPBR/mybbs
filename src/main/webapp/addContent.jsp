@@ -18,6 +18,15 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstracp/css/bootstrap.min.css">
 </head>
 <body>
+<%
+    if (session.getAttribute("user") == null){
+%>
+<a href="${pageContext.request.contextPath}/login.jsp" style="display: none">
+    <li id="returnLogin">自动跳转</li>
+</a>
+<%
+    }
+%>
 <div class="container">
     <%--由于本次编写需要基于表单，同时需要考虑到数据验证的问题，那么就可以不写row样式--%>
     <%--<form id="loginFrom" action="${pageContext.request.contextPath}/user/register.action" method="post" class="form-horizontal">--%>
@@ -40,7 +49,7 @@
             <div class="form-group" id="passwordDiv">
                 <label class="col-md-3 control-label" for="title">内容</label>
                 <div class="col-md-5">
-                    <textarea id="info"name="info" class="form-control" rows="3" placeholder="请输入文本内容"></textarea>
+                    <textarea id="info"name="info" class="form-control" rows="20" placeholder="请输入文本内容"></textarea>
                     <%--<input type="text" id="info" name="info" class="form-control" placeholder="请输入文本内容">--%>
                 </div>
                 <div class="col-md-4" id="passwordSpan"></div>
