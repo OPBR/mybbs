@@ -20,6 +20,8 @@ public class Content {
     @Column(length = 32)
     private String id;
     private String title;
+
+    @Lob
     private String info;
 
     @Temporal(TemporalType.TIMESTAMP)
