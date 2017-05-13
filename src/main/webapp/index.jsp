@@ -15,7 +15,7 @@
     <%--由于Bootstrap要基于jQuery完成，所以需要先导入jQuery的开发包--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/bootstracp/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/lo.js"></script>
+    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/lo.js"></script>--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstracp/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
@@ -50,7 +50,7 @@
     </thead>
     <tbody>
     <c:forEach var="movie" items="${requestScope.contentList}">
-        <tr>
+        <tr id="row${movie.id}">
             <td><font size="6" style="font-family: '微软雅黑'">${movie.title}</font></td>
             <a href="#">
                 <td><font size="6" style="font-family: '微软雅黑'">${movie.user.username}</font></td>
@@ -75,9 +75,9 @@
                             <form action="${pageContext.request.contextPath}/content/updateContent/${movie.id}" method="post">
                                 <button type="submit" class="btn btn-xs btn-primary">更新</button>
                             </form>
-                            <form action="${pageContext.request.contextPath}/content/deleteContent/${movie.id}" method="post">
-                                <button type="submit" class="btn btn-xs btn-danger">删除</button>
-                            </form>
+                            <%--<form action="${pageContext.request.contextPath}/content/deleteContent/${movie.id}" method="post">--%>
+                                <button id="remove${movie.id}" type="button" class="btn btn-xs btn-danger" onclick="remove('${movie.id}')">删除</button>
+                            <%--</form>--%>
                             <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '1')">
                                 <button class="btn btn-warning">
                                     <span id="praiseId1${movie.id}" class="glyphicon glyphicon-thumbs-up"><label id="label1${movie.id}" style="display: inline-block">${movie.count}</label></span>
@@ -136,6 +136,21 @@
                 }
             }
         });
+    }
+    function remove(id) {
+        $("#row" + id).remove();
+        <%--location.href = "${pageContext.request.contextPath}/content/deleteContent?id=" + id;--%>
+        $.ajax({
+            url: "${pageContext.request.contextPath}/content/deleteContent",
+            type: "POST",
+            data: {
+                'id': id
+            },
+            dataType: "JSON",
+            success: function () {
+
+            }
+        })
     }
 </script>
 </html>
