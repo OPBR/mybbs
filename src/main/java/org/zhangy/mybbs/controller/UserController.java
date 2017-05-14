@@ -54,8 +54,6 @@ public class UserController {
             request.getRequestDispatcher("/register.jsp").forward(request,response);
         }
         else {
-            System.out.println(user.getPhone());
-//            System.out.println(new String(user.getPhone()));
             byte[] encrypt = DESTest.encrypt(new String(user.getRealname()), Md5Util.md5(user.getUsername()));
             user.setRealname(encrypt);
             user.setRealid(Md5Util.md5(user.getRealid()));
@@ -79,29 +77,23 @@ public class UserController {
             model.addAttribute("contentList", all);
             return new SuccessResponse();
         }
-//        return "redirect:/jsp/success.jsp";
         return new FailedResponse();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/find")
-    public String findPass(Model model, User user){
-        User name = userService.findName(user.getUsername());
-        System.out.println(name);
-        if (name != null){
-            System.out.println("=====================");
-            String decrypt = DESTest.decrypt(name.getRealname(), Md5Util.md5(user.getUsername()));
-            System.out.println(decrypt);
-            System.out.println(new String(user.getRealname()));
-            System.out.println(name.getRealid() + " ---- " + Md5Util.md5(user.getRealid()));
-            System.out.println(name.getPhone() + " ---- " + Md5Util.md5(user.getPhone()));
-            if (decrypt.equals(new String(user.getRealname()))&& name.getRealid().equals(Md5Util.md5(user.getRealid()))&& name.getPhone().equals(Md5Util.md5(user.getPhone()))){
-                System.out.println("hear");
-                name.setPassword(Md5Util.md5(user.getPassword()));
-                userService.saveOrUpdate(name);
-                return "/login.jsp";
+    @RequestMapping(method = RequestMethod.POST, value = "find")
+    @ResponseBody
+    public Response findPass(String username, String realName, String realId, String phone, String password){
+        User user = userService.findName(username);
+        System.out.println(user);
+        if (user != null){
+            String decrypt = DESTest.decrypt(user.getRealname(), Md5Util.md5(user.getUsername()));
+            if (decrypt.equals(realName)&& user.getRealid().equals(Md5Util.md5(realId))&& user.getPhone().equals(Md5Util.md5(phone))){
+                user.setPassword(Md5Util.md5(password));
+                userService.saveOrUpdate(user);
+                return new SuccessResponse();
             }
         }
-        return "/register.jsp";
+        return new FailedResponse();
     }
 
     @RequestMapping(method = {RequestMethod.GET}, value = "/index")
