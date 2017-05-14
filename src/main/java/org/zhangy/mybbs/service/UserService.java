@@ -21,4 +21,6 @@ public interface UserService {
     public User findPhone(String phone);
 
     public User findVerify(String username, String password);
+
+    public User findByRealid(String realid);
 }

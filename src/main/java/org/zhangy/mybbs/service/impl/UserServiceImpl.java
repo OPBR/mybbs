@@ -46,4 +46,8 @@ public class UserServiceImpl implements UserService {
     public User findVerify(String username, String password) {
         return userDao.findByUsernameAndPassword(username,password);
     }
+
+    public User findByRealid(String realid) {
+        return userDao.findByRealid(realid);
+    }
 }
