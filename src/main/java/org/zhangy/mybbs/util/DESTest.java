@@ -7,11 +7,7 @@ import javax.crypto.spec.DESKeySpec;
 import java.security.SecureRandom;
 
 /**
- * DESTest.java
- *
- * @author Techzero
- * @Email techzero@163.com
- * @Time 2013-12-12 下午2:22:58
+ * DES加密
  */
 public class DESTest {
 
