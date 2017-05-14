@@ -42,26 +42,30 @@ public class UserController {
     @Autowired
     private PraiseService praiseService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/register")
-    public String register(Model model, User user, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User name = userService.findName(user.getUsername());
-        User phone = userService.findPhone(Md5Util.md5(user.getPhone()));
-        if (name != null){
-            request.setAttribute("message1", "用户名已存在，不能重复注册");
-            request.getRequestDispatcher("/register.jsp").forward(request,response);
-        } else if (phone != null){
-            request.setAttribute("message2", "手机号已存在，不能重复注册");
-            request.getRequestDispatcher("/register.jsp").forward(request,response);
+    @RequestMapping(method = RequestMethod.POST, value = "register")
+    @ResponseBody
+    public Response register(String username, String realName, String realId, String phone, String password, User user, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user1 = userService.findName(username);
+        User user2 = userService.findPhone(Md5Util.md5(phone));
+        User user3 = userService.findByRealid(Md5Util.md5(realId));
+        if (null != user1){
+            return new FailedResponse("用户名已存在，不能重复注册");
+        }
+        if (null != user2){
+            return new FailedResponse("手机号已存在，不能重复注册");
+        }
+        if (null != user3){
+            return new FailedResponse("身份证号已存在，不能重复注册");
         }
         else {
-            byte[] encrypt = DESTest.encrypt(new String(user.getRealname()), Md5Util.md5(user.getUsername()));
+            byte[] encrypt = DESTest.encrypt(realName, Md5Util.md5(username));
             user.setRealname(encrypt);
-            user.setRealid(Md5Util.md5(user.getRealid()));
-            user.setPhone(Md5Util.md5(user.getPhone()));
-            user.setPassword(Md5Util.md5(user.getPassword()));
+            user.setRealid(Md5Util.md5(realId));
+            user.setPhone(Md5Util.md5(phone));
+            user.setPassword(Md5Util.md5(password));
             userService.saveOrUpdate(user);
         }
-        return "redirect:/jsp/success.jsp";
+        return new SuccessResponse();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/login")
