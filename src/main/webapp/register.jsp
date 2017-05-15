@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>找回密码</title>
+    <title>用户注册</title>
     <link href="${pageContext.request.contextPath}/bootstracp/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
     <link href="${pageContext.request.contextPath}/css/login-2.min.css" rel="stylesheet" type="text/css" />
