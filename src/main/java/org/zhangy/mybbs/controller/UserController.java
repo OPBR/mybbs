@@ -27,11 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by DELL on 2017/4/10.
+ * Created by zy on 2017/4/10.
  */
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
+    private static final String USER_INDEX_PAGE = "/index.jsp";
 
     @Autowired
     private UserService userService;
@@ -68,7 +69,7 @@ public class UserController {
         return new SuccessResponse();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    @RequestMapping(method = RequestMethod.POST, value = "login")
     @ResponseBody
     public Response login(String username, String password, Model model, HttpSession session){
         User user = userService.findVerify(username, password);
@@ -100,11 +101,11 @@ public class UserController {
         return new FailedResponse();
     }
 
-    @RequestMapping(method = {RequestMethod.GET}, value = "/index")
+    @RequestMapping(method = {RequestMethod.GET}, value = "index")
     public String index(Model model){
         List<Content> all = contentService.findAllSort();
         model.addAttribute("contentList",all);
-        return "/index.jsp";
+        return USER_INDEX_PAGE;
     }
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/my/{username}")
@@ -115,6 +116,6 @@ public class UserController {
             contents = contentService.findByUser(user);
         }
         model.addAttribute("contentList", contents);
-        return "/index.jsp";
+        return USER_INDEX_PAGE;
     }
 }

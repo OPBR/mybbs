@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by DELL on 2017/4/10.
+ * Created by zy on 2017/4/10.
  */
 @Entity
 @Table(name = "comment")

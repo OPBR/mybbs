@@ -16,7 +16,7 @@ import org.zhangy.mybbs.service.UserService;
 import java.util.List;
 
 /**
- * Created by DELL on 2017/4/12.
+ * Created by zy on 2017/4/12.
  */
 @Controller
 @RequestMapping(value = "/comment")

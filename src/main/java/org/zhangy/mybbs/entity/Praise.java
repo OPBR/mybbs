@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 /**
- * Created by DELL on 2017/4/15.
+ * Created by zy on 2017/4/15.
  */
 @Entity
 @Table(name = "praise")

@@ -6,7 +6,7 @@ import org.zhangy.mybbs.entity.User;
 import java.util.List;
 
 /**
- * Created by DELL on 2017/4/10.
+ * Created by zy on 2017/4/10.
  */
 public interface ContentService {
     public Content get(String id);
