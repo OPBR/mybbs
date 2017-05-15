@@ -30,7 +30,7 @@
         </div>
         <div class="form-group input-group">
             <input id="username" style="background-color: #6c7a88;border-right-color: #6c7a88" class="form-control" type="text" autocomplete="off" placeholder="用户名" name="username" />
-            <span class="" style="background-color: #9fb1b9; border-color: #9fb1b9 #9fb1b9 #9fb1b9 #6c7a88">账号</span>
+            <span class="input-group-addon" style="background-color: #9fb1b9; border-color: #9fb1b9 #9fb1b9 #9fb1b9 #6c7a88">账号</span>
         </div>
         <div class="form-group input-group">
             <input id="realname" style="background-color: #6c7a88;border-right-color: #6c7a88" class="form-control" type="text" autocomplete="off" placeholder="真实姓名" name="realname" />
