@@ -26,7 +26,7 @@
         </div>
         <div id="hint" class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
-            <span> 用户名或密码错误 </span>
+            <%--<span> 用户名或密码错误 </span>--%>
         </div>
         <div class="form-group">
             <input id="username" style="background-color: #6c7a88" class="form-control" type="text" autocomplete="off" placeholder="用户名" name="username" /> </div>
@@ -38,7 +38,7 @@
         <div class="form-actions">
             <div class="pull-left">
                 <label class="rememberme mt-checkbox mt-checkbox-outline">
-                    <input type="checkbox" name="remember" value="1" /> 记住密码
+                    <input id="ck_rmbUser" type="checkbox" name="remember" value="1" /> 记住密码
                     <span></span>
                 </label>
             </div>
@@ -49,6 +49,7 @@
     </form>
 </div>
 <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.cookie.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.md5.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/bootstracp/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/login/index.js" type="text/javascript"></script>
