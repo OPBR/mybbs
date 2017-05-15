@@ -30,7 +30,7 @@ import java.util.List;
  * Created by zy on 2017/4/10.
  */
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "user")
 public class UserController {
     private static final String USER_INDEX_PAGE = "/index.jsp";
 
