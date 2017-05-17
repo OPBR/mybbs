@@ -2,8 +2,15 @@ package org.zhangy.mybbs.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Created by zy on 2017/4/10.
@@ -19,8 +26,8 @@ public class Comment {
     private String id;
     private String info;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date current;
+//    @Temporal(TemporalType.TIMESTAMP)
+    private String current;
 
     @ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
     @JoinColumn(name = "content_id")
@@ -54,11 +61,11 @@ public class Comment {
         this.info = info;
     }
 
-    public Date getCurrent() {
+    public String getCurrent() {
         return current;
     }
 
-    public void setCurrent(Date current) {
+    public void setCurrent(String current) {
         this.current = current;
     }
 

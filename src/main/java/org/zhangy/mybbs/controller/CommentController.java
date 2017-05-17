@@ -14,8 +14,6 @@ import org.zhangy.mybbs.service.CommentService;
 import org.zhangy.mybbs.service.ContentService;
 import org.zhangy.mybbs.service.UserService;
 
-import java.util.Date;
-
 /**
  * Created by zy on 2017/4/12.
  */
@@ -35,12 +33,12 @@ public class CommentController {
 
     @RequestMapping(method = RequestMethod.POST, value = "release")
     @ResponseBody
-    public Response releaseComment(String username, String id, String info){
+    public Response releaseComment(String username, String id, String info, String current){
         User user = userService.findName(username);
         Comment comment = new Comment();
         comment.setInfo(info);
         comment.setUser(user);
-        comment.setCurrent(new Date());
+        comment.setCurrent(current);
         Content content = contentService.get(id);
         comment.setContent(content);
         commentService.saveOrUpdate(comment);
