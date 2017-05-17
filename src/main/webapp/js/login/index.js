@@ -49,4 +49,4 @@ function Save() {
         $.cookie("username", "", { expires: -1 });
         $.cookie("password", "", { expires: -1 });
     }
-};
+}
