@@ -26,8 +26,8 @@
         </div>
         <div class="page-content-wrapper">
             <div class="page-content">
-                <h1 class="page-title" style=""> Light Portlets
-                    <small>light bootstrap portlet samples</small>
+                <h1 class="page-title" style=""> <%--Light Portlets--%>
+                    <small><%--light bootstrap portlet samples--%></small>
                 </h1>
                 <%--<div class="note note-info note-bordered">
                     <p> See
@@ -67,14 +67,17 @@
                                 </div>
                                 <table class="table">
                                     <caption></caption>
-                                    <thead>
+                                    <thead id="comment">
                                     <tr>
                                         <th>用户</th>
                                         <th>内容</th>
                                         <th>时间</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="comment">
+                                    <%--<tbody id="comment">
+
+                                    </tbody>--%>
+                                    <tbody>
                                     <c:forEach var="comment" items="${requestScope.commentList}">
                                         <tr>
                                             <td>
