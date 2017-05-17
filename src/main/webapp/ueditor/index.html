@@ -21,7 +21,7 @@
     <h1>完整demo</h1>
     <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
 </div>
-<div id="btns">
+<!--<div id="btns">
     <div>
         <button onclick="getAllHtml()">获得整个html的内容</button>
         <button onclick="getContent()">获得内容</button>
@@ -50,13 +50,13 @@
         <button onclick="clearLocalData()" >清空草稿箱</button>
     </div>
 
-</div>
-<div>
+</div>-->
+<!--<div>
     <button onclick="createEditor()">
     创建编辑器</button>
     <button onclick="deleteEditor()">
     删除编辑器</button>
-</div>
+</div>-->
 
 <script type="text/javascript">
 
@@ -65,15 +65,15 @@
     var ue = UE.getEditor('editor');
 
 
-    function isFocus(e){
+   /* function isFocus(e){
         alert(UE.getEditor('editor').isFocus());
         UE.dom.domUtils.preventDefault(e)
     }
     function setblur(e){
         UE.getEditor('editor').blur();
         UE.dom.domUtils.preventDefault(e)
-    }
-    function insertHtml() {
+    }*/
+    /*function insertHtml() {
         var value = prompt('插入html代码', '');
         UE.getEditor('editor').execCommand('insertHtml', value)
     }
@@ -160,8 +160,8 @@
         for (var i = 0, btn; btn = btns[i++];) {
             UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
         }
-    }
-
+    }*/
+/*
     function getLocalData () {
         alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
     }
@@ -169,7 +169,7 @@
     function clearLocalData () {
         UE.getEditor('editor').execCommand( "clearlocaldata" );
         alert("已清空草稿箱")
-    }
+    }*/
 </script>
 </body>
 </html>
