@@ -3,14 +3,15 @@
  */
 $(function () {
     $('#returnLogin').trigger("click");
-    $('#subBut').on('click', function () {
+    var ue = UE.getEditor('editor');
+    $('#subBtn').on('click', function () {
        $.ajax({
            url: 'content/release',
            type: 'POST',
            data: {
                'username' : $("#hidInput").val(),
                'title' : $("#title").val(),
-               'info' : $("#info").val()
+               'info' : UE.getEditor('editor').getContent()
            },
            dataType: "JSON",
            success: function (data) {
