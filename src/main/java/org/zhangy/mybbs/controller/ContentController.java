@@ -76,15 +76,14 @@ public class ContentController {
         return new SuccessResponse();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/updateSubmit/{id}")
-    public String updateSubmit(@PathVariable String id, Model model, Content content){
+    @RequestMapping(method = RequestMethod.POST, value = "updateSubmit")
+    @ResponseBody
+    public Response updateSubmit(String id, Content content){
         Content content1 = contentService.get(id);
         content1.setTitle(content.getTitle());
         content1.setInfo(content.getInfo());
         contentService.saveOrUpdate(content1);
-        List<Content> all = contentService.findAllSort();
-        model.addAttribute("contentList", all);
-        return "/index.jsp";
+        return new SuccessResponse();
     }
     @RequestMapping(method = RequestMethod.POST, value = "/findContent/addComment/{id}")
     public String addComment(@PathVariable String id, Model model){
