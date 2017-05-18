@@ -1,5 +1,11 @@
-body {
+/*body {
      background:url(login.jpg) #f8f6e9;
+}*/
+body {
+     background-image:url(login.jpg);
+     background-color: #f8f6e9;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
 }
 /*
 .mycenter{
