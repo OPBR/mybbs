@@ -18,7 +18,7 @@
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/lo.js"></script>--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstracp/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/index/index.js"></script>
 </head>
 <body>
 <%
@@ -112,16 +112,19 @@
                 <c:if test="${sessionScope.user eq movie.user.username}">
                     <c:if test="${empty sessionScope.user}">
                         <td>
-                            <form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">
-                                <button type="submit" class="btn btn-xs btn-info">查看</button>
-                            </form>
+                            <%--<form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">--%>
+                                <%--<button type="button" class="btn btn-xs btn-info">查看</button>--%>
+                                <a href="${pageContext.request.contextPath}/content/findContent?id=${movie.id}" class="btn btn-xs btn-info">查看</a>
+                            <%--</form>--%>
                         </td>
                     </c:if>
                     <c:if test="${not empty sessionScope.user}">
                         <td colspan="3">
-                            <form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">
-                                <button type="submit" id="subBut" class="btn btn-xs btn-info">查看</button>
-                            </form>
+                            <input id="hidInput" type="hidden" value="${movie.id}">
+                            <%--<form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">--%>
+                            <%--<button type="button" class="btn btn-xs btn-info">查看</button>--%>
+                            <a href="${pageContext.request.contextPath}/content/findContent?id=${movie.id}" class="btn btn-xs btn-info">查看</a>
+                            <%--</form>--%>
                             <form action="${pageContext.request.contextPath}/content/updateContent/${movie.id}" method="post">
                                 <button type="submit" class="btn btn-xs btn-primary">更新</button>
                             </form>
@@ -139,9 +142,10 @@
                 <c:if test="${!(sessionScope.user eq movie.user.username)}">
                     <c:if test="${not empty sessionScope.user }">
                         <td>
-                            <form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">
-                                <button type="submit" class="btn btn-xs btn-info">查看</button>
-                            </form>
+                            <%--<form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">--%>
+                                <%--<button type="button" class="btn btn-xs btn-info">查看</button>--%>
+                                <a href="${pageContext.request.contextPath}/content/findContent?id=${movie.id}" class="btn btn-xs btn-info">查看</a>
+                            <%--</form>--%>
                             <c:if test="${sessionScope.type == 1}">
                                 <button id="remove${movie.id}" type="button" class="btn btn-xs btn-danger" onclick="remove('${movie.id}')">删除</button>
                             </c:if>
@@ -154,9 +158,10 @@
                     </c:if>
                     <c:if test="${empty sessionScope.user }">
                         <td>
-                            <form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">
+                            <%--<form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">
                                 <button type="submit" class="btn btn-xs btn-info">查看</button>
-                            </form>
+                            </form>--%>
+                                <a href="${pageContext.request.contextPath}/content/findContent?id=${movie.id}" class="btn btn-xs btn-info">查看</a>
                         </td>
                     </c:if>
                 </c:if>

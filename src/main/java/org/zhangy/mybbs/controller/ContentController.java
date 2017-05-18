@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zhangy.mybbs.dto.json.Response;
 import org.zhangy.mybbs.dto.json.impl.SuccessResponse;
@@ -50,8 +51,8 @@ public class ContentController {
         return new SuccessResponse();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/findContent/{id}")
-    public String findContent(@PathVariable String id, Comment comment, Model model){
+    @RequestMapping(method = RequestMethod.GET, value = "findContent")
+    public String findContent(@RequestParam("id") String id, Model model){
         Content content = contentService.get(id);
         model.addAttribute("content", content);
         List<Comment> all = commentService.findContent(content);

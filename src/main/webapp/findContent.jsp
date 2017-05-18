@@ -50,20 +50,12 @@
                                         <i class="fa fa-plus"></i> Add </a>
                                     <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;"> </a>
                                     <input id="hidInputName" type="hidden" value="${sessionScope.user}">
-                                    <input id="hidInputId" type="hidden" value="${requestScope.id}">
+                                    <input id="hidInputId" type="hidden" value="${requestScope.content.id}">
                                 </div>
                             </div>
                             <div class="portlet-body">
                                 <div class="scroller" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
                                     ${requestScope.content.info}
-                                    <%--<h4>Heading Text</h4>--%>
-                                    <%--<p> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula,--%>
-                                        <%--eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur--%>
-                                        <%--purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. consectetur purus sit amet fermentum.--%>
-                                        <%--Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. </p>--%>
-                                    <%--<p> nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.--%>
-                                        <%--Cras mattis consectetur purus sit amet fermentum. consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur--%>
-                                        <%--purus sit amet fermentum. </p>--%>
                                 </div>
                                 <table class="table">
                                     <caption></caption>
