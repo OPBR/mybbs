@@ -19,13 +19,6 @@ $(function () {
            dataType: 'JSON',
            success: function (data) {
                if ('1' == data.code){
-                   // $('#comment').attr('class', "");
-                 /*  $('#comment').append('<td>' + $('#hidInputName').val()
-                        + '</td>'
-                        + '<td>' + $('#info').val()
-                        + '</td>'
-                        + '<td>' + myDate.toLocaleString()
-                        + '</td>')*/
                    $('#comment').after('<tbody><tr>'
                         + '<td>' + $('#hidInputName').val()
                         + '</td>'

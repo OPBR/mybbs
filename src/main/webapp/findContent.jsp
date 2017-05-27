@@ -44,8 +44,10 @@
                                     <%--<span class="caption-helper">weekly stats...</span>--%>
                                 </div>
                                 <div class="actions">
-                                    <a id="edit" href="javascript:;" class="btn btn-circle btn-default">
-                                        <i class="fa fa-pencil"></i> 评论 </a>
+                                    <c:if test="${not empty sessionScope.user}">
+                                        <a id="edit" href="javascript:;" class="btn btn-circle btn-default">
+                                            <i class="fa fa-pencil"></i> 评论 </a>
+                                    </c:if>
                                     <a href="javascript:;" class="btn btn-circle btn-default">
                                         <i class="fa fa-plus"></i> Add </a>
                                     <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;"> </a>

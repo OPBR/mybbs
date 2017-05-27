@@ -18,11 +18,7 @@ import org.zhangy.mybbs.service.UserService;
 import org.zhangy.mybbs.util.DESTest;
 import org.zhangy.mybbs.util.Md5Util;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +41,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, value = "register")
     @ResponseBody
-    public Response register(String username, String realName, String realId, String phone, String password, User user, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public Response register(String username, String realName, String realId, String phone, String password, User user){
         User user1 = userService.findName(username);
         User user2 = userService.findPhone(Md5Util.md5(phone));
         User user3 = userService.findByRealid(Md5Util.md5(realId));
