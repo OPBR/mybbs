@@ -18,7 +18,7 @@
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/lo.js"></script>--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstracp/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/index/index.js"></script>
+    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/index/index.js"></script>--%>
 </head>
 <body>
 <%
