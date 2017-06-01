@@ -10,13 +10,13 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>发布公告</title>
+    <title>更新公告</title>
     <link href="${pageContext.request.contextPath}/bootstracp/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
     <link href="${pageContext.request.contextPath}/css/login-2.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 <body class=" login">
-<%--<%
+<%
     if (session.getAttribute("user") == null){
 %>
 <a href="${pageContext.request.contextPath}/login.jsp" style="display: none">
@@ -24,7 +24,7 @@
 </a>
 <%
     }
-%>--%>
+%>
 <div class="logo">
 </div>
 <div class="">
