@@ -41,7 +41,9 @@
             <input type="hidden" id="hidContentId" value="${requestScope.content.id}">
             <input id="title" class="form-control" type="text" autocomplete="off" placeholder="标题" name="title" value="${requestScope.content.title}"/> </div>
         <div class="form-group">
-            <input id="hidInfo" type="hidden" value="${requestScope.content.info}">
+            <div class="hidden">
+                <input id="hidInfo" type="hidden" value='${requestScope.content.info}'>
+            </div>
             <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script> </div>
         <div class="form-group">
             <button id="subBtn" type="button" class="btn green ">更新</button>
