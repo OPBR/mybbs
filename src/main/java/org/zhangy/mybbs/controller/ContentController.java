@@ -57,8 +57,6 @@ public class ContentController {
         model.addAttribute("content", content);
         List<Comment> all = commentService.findContent(content);
         model.addAttribute("commentList", all);
-//        List<Comment> all = commentService.findAll();
-//        model.addAttribute("commentList", all);
         return "/findContent.jsp";
     }
 
