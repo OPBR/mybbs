@@ -34,7 +34,6 @@
         </div>
         <div id="hint" class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
-            <%--<span> 用户名或密码错误 </span>--%>
         </div>
         <div class="form-group">
             <input type="hidden" id="hidInput" value="${sessionScope.user}">
