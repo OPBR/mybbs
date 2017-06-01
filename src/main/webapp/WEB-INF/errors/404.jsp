@@ -12,9 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404页面</title>
     <link href="${pageContext.request.contextPath}/bootstracp/css/bootstrap.min.css" rel="stylesheet">
-    <%--<link href="css/font-awesome.min.css" rel="stylesheet" >--%>
-    <%--<link href="css/animate.min.css" rel="stylesheet">--%>
-    <%--<link href="css/style.min.css" rel="stylesheet">--%>
     <base target="_self">
 </head>
 <body >
