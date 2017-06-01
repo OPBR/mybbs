@@ -2,6 +2,7 @@
  * Created by DELL on 2017/5/18.
  */
 $(function () {
+    $('#returnLogin').click();
     var ue = UE.getEditor('editor');
     ue.addListener("ready", function () {
         ue.setContent($('#hidInfo').val(), false);
