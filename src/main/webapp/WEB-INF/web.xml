@@ -36,6 +36,10 @@
     <location>/WEB-INF/errors/404.jsp</location>
   </error-page>
   <error-page>
+    <error-code>405</error-code>
+    <location>/WEB-INF/errors/405.jsp</location>
+  </error-page>
+  <error-page>
     <exception-type>java.lang.Throwable</exception-type>
     <location>/WEB-INF/errors/500.jsp</location>
   </error-page>
