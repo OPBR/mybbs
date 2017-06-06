@@ -1,5 +1,5 @@
 /**
- * Created by DELL on 2017/3/14.
+ * Created by zy on 2017/3/14.
  */
 $(function () {
     // 需要做一个针对于mid或者是password输入的字段丢失焦点的事件处理
