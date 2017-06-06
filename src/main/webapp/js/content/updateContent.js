@@ -1,5 +1,5 @@
 /**
- * Created by DELL on 2017/5/18.
+ * Created by zy on 2017/5/18.
  */
 $(function () {
     $('#returnLogin').click();

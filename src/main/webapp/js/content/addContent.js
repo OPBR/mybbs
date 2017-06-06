@@ -1,5 +1,5 @@
 /**
- * Created by pc on 2017/5/12.
+ * Created by zy on 2017/5/12.
  */
 $(function () {
     $('#returnLogin').trigger("click");
