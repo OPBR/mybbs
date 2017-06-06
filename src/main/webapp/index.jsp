@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: DELL
+  User: zy
   Date: 2017/4/11
   Time: 13:24
   To change this template use File | Settings | File Templates.
@@ -17,7 +17,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/bootstracp/js/bootstrap.min.js"></script>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/lo.js"></script>--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstracp/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css">
+    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css">--%>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/index/index.js"></script>--%>
 </head>
 <body>
@@ -55,31 +55,6 @@
         </ul>
     </nav>
 </div>
-<%--<div class="col-md-12">
-    <div class="pull-left col-md-2">
-        <a href="${pageContext.request.contextPath}/addContent.jsp" class="btn btn-xs btn-primary">发帖</a>
-    </div>
-    <div class="pull-left col-md-2">
-        <a href="${pageContext.request.contextPath}/user/my/${sessionScope.user}" class="btn btn-xs btn-primary">我的</a>
-    </div>
-    <div class="pull-left col-md-2">
-        <a href="${pageContext.request.contextPath}/logout.jsp" class="btn btn-xs btn-warning">退出</a>
-    </div>
-    <div class="pull-right col-md-2">
-        <a href="${pageContext.request.contextPath}/praise/sort" class="btn btn-xs btn-warning">按赞排序</a>
-    </div>
-    <div class="pull-right col-md-2">
-        <a href="${pageContext.request.contextPath}/user/index" class="btn btn-xs btn-warning">默认排序</a>
-    </div>
-    <div class="pull-right col-md-2">
-        <a href="#">修改密码</a>
-    </div>
-</div>--%>
-<%--<a href="${pageContext.request.contextPath}/addContent.jsp" class="btn btn-xs btn-primary">发帖</a>
-<a href="${pageContext.request.contextPath}/user/my/${sessionScope.user}" class="btn btn-xs btn-primary">我的</a>
-<a href="${pageContext.request.contextPath}/logout.jsp" class="btn btn-xs btn-warning">退出</a>
-<a href="${pageContext.request.contextPath}/praise/sort" class="btn btn-xs btn-warning">按赞排序</a>
-<a href="${pageContext.request.contextPath}/user/index" class="btn btn-xs btn-warning">默认排序</a>--%>
 <%
 } else {
 %>
@@ -112,25 +87,17 @@
                 <c:if test="${sessionScope.user eq movie.user.username}">
                     <c:if test="${empty sessionScope.user}">
                         <td>
-                            <%--<form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">--%>
-                                <%--<button type="button" class="btn btn-xs btn-info">查看</button>--%>
                                 <a href="${pageContext.request.contextPath}/content/findContent?id=${movie.id}" class="btn btn-xs btn-info">查看</a>
-                            <%--</form>--%>
                         </td>
                     </c:if>
                     <c:if test="${not empty sessionScope.user}">
                         <td colspan="3">
                             <input id="hidInput" type="hidden" value="${movie.id}">
-                            <%--<form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">--%>
-                            <%--<button type="button" class="btn btn-xs btn-info">查看</button>--%>
                             <a href="${pageContext.request.contextPath}/content/findContent?id=${movie.id}" class="btn btn-xs btn-info">查看</a>
-                            <%--</form>--%>
                             <form action="${pageContext.request.contextPath}/content/updateContent/${movie.id}" method="post">
                                 <button type="submit" class="btn btn-xs btn-primary">更新</button>
                             </form>
-                            <%--<form action="${pageContext.request.contextPath}/content/deleteContent/${movie.id}" method="post">--%>
                                 <button id="remove${movie.id}" type="button" class="btn btn-xs btn-danger" onclick="remove('${movie.id}')">删除</button>
-                            <%--</form>--%>
                             <a href="javascript:void (0)" onclick="praise('${sessionScope.user}', '${movie.id}', '1')">
                                 <button class="btn btn-warning">
                                     <span id="praiseId1${movie.id}" class="glyphicon glyphicon-thumbs-up"><label id="label1${movie.id}" style="display: inline-block">${movie.count}</label></span>
@@ -142,10 +109,7 @@
                 <c:if test="${!(sessionScope.user eq movie.user.username)}">
                     <c:if test="${not empty sessionScope.user }">
                         <td>
-                            <%--<form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">--%>
-                                <%--<button type="button" class="btn btn-xs btn-info">查看</button>--%>
                                 <a href="${pageContext.request.contextPath}/content/findContent?id=${movie.id}" class="btn btn-xs btn-info">查看</a>
-                            <%--</form>--%>
                             <c:if test="${sessionScope.type == 1}">
                                 <button id="remove${movie.id}" type="button" class="btn btn-xs btn-danger" onclick="remove('${movie.id}')">删除</button>
                             </c:if>
@@ -158,9 +122,6 @@
                     </c:if>
                     <c:if test="${empty sessionScope.user }">
                         <td>
-                            <%--<form action="${pageContext.request.contextPath}/content/findContent/${movie.id}" method="post">
-                                <button type="submit" class="btn btn-xs btn-info">查看</button>
-                            </form>--%>
                                 <a href="${pageContext.request.contextPath}/content/findContent?id=${movie.id}" class="btn btn-xs btn-info">查看</a>
                         </td>
                     </c:if>

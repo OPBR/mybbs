@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: DELL
+  User: zy
   Date: 2017/3/14
   Time: 15:17
   To change this template use File | Settings | File Templates.
@@ -26,7 +26,6 @@
         </div>
         <div id="hint" class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
-            <%--<span> 输入的信息有错 </span>--%>
         </div>
         <div class="form-group input-group">
             <input id="username" style="background-color: #6c7a88;border-right-color: #6c7a88" class="form-control" type="text" autocomplete="off" placeholder="用户名" name="username" />
