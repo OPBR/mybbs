@@ -10,7 +10,7 @@ import org.zhangy.mybbs.entity.User;
 import java.util.List;
 
 /**
- * Created by DELL on 2017/4/15.
+ * Created by zy on 2017/4/15.
  */
 public interface PraiseDao extends JpaRepository<Praise, String>{
     @Query("from Praise p where p.user = :user and p.content = :content")
