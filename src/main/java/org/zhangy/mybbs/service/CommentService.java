@@ -9,14 +9,14 @@ import java.util.List;
  * Created by zy on 2017/4/10.
  */
 public interface CommentService {
-    public Comment get(String id);
+    Comment get(String id);
 
-    public void saveOrUpdate(Comment comment);
+    void saveOrUpdate(Comment comment);
 
-    public void delete(String id);
+    void delete(String id);
 
-    public List<Comment> findAll();
+    List<Comment> findAll();
 
-    public List<Comment> findContent(Content content);
+    List<Comment> findContent(Content content);
 
 }
