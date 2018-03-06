@@ -8,19 +8,19 @@ import java.util.List;
  * Created by zy on 2017/4/10.
  */
 public interface UserService {
-    public User get(String id);
+    User get(String id);
 
-    public void saveOrUpdate(User user);
+    void saveOrUpdate(User user);
 
-    public void delete(String id);
+    void delete(String id);
 
-    public List<User> findAll();
+    List<User> findAll();
 
-    public User findName(String username);
+    User findName(String username);
 
-    public User findPhone(String phone);
+    User findPhone(String phone);
 
-    public User findVerify(String username, String password);
+    User findVerify(String username, String password);
 
-    public User findByRealid(String realid);
+    User findByRealid(String realid);
 }

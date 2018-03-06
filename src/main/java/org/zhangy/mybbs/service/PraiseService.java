@@ -10,13 +10,13 @@ import java.util.List;
  * Created by zy on 2017/4/15.
  */
 public interface PraiseService {
-    public Praise get(String id);
+    Praise get(String id);
 
-    public void saveOrDelete(Praise praise);
+    void saveOrDelete(Praise praise);
 
-    public void delete(String id);
+    void delete(String id);
 
-    public List<Praise> findAll();
+    List<Praise> findAll();
 
-    public Praise findCondition(User user, Content content);
+    Praise findCondition(User user, Content content);
 }
